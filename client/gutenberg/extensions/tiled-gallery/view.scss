@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './css-gram.scss';
 
 $tiled-gallery-max-column-count: 20;
 
@@ -76,6 +77,18 @@ $tiled-gallery-max-column-count: 20;
 
 	&.filter__sepia {
 		filter: sepia( 100% );
+	}
+
+	&.filter__1977 {
+		@include _1977;
+	}
+
+	&.filter__clarendon {
+		@include clarendon;
+	}
+
+	&.filter__gingham {
+		@include gingham;
 	}
 
 	& + & {
