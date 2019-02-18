@@ -156,7 +156,13 @@ class TiledGalleryEdit extends Component {
 	render() {
 		const { selectedImage } = this.state;
 		const { attributes, isSelected, className, noticeOperations, noticeUI } = this.props;
-		const { align, columns = defaultColumnsNumber( attributes ), images, linkTo } = attributes;
+		const {
+			align,
+			columns = defaultColumnsNumber( attributes ),
+			imageFilter,
+			images,
+			linkTo,
+		} = attributes;
 
 		const dropZone = <DropZone onFilesDrop={ this.addFiles } />;
 
@@ -237,6 +243,7 @@ class TiledGalleryEdit extends Component {
 					align={ align }
 					className={ className }
 					columns={ columns }
+					imageFilter={ imageFilter }
 					images={ images }
 					layoutStyle={ layoutStyle }
 					linkTo={ linkTo }
