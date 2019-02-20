@@ -10,6 +10,7 @@ import ResizeObserver from 'resize-observer-polyfill';
  */
 import createSwiper from './create-swiper';
 import swiperResize from './swiper-resize';
+import swiperApplyAria from './swiper-apply-aria';
 
 class Slideshow extends Component {
 	pendingRequestAnimationFrame = null;
@@ -167,6 +168,7 @@ class Slideshow extends Component {
 			{
 				init: swiperResize,
 				imagesReady: swiperResize,
+				transitionEnd: swiperApplyAria,
 			}
 		);
 }
