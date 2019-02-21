@@ -122,7 +122,7 @@ export default function FilterToolbar( { value, onChange } ) {
 					onClose();
 				};
 				return (
-					<NavigableMenu>
+					<NavigableMenu className="tiled-gallery__filter-picker-menu">
 						{ availableFilters.map( ( { icon, title, value: filterValue } ) => (
 							<MenuItem
 								icon={ icon }
