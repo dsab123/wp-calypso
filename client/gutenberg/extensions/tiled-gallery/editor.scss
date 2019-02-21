@@ -32,6 +32,13 @@
 
 		&.is-selected {
 			outline: 4px solid $tiled-gallery-selection;
+
+			// Disable filters when selected
+			filter: none;
+			&::before,
+			&::after {
+				content: none;
+			}
 		}
 
 		&.is-transient img {
