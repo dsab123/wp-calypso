@@ -19,6 +19,14 @@
 			"requires": {
 				"color-studio": "github:automattic/color-studio#279f6ae4eacb15bc4f8f75856101aa4d0f4fd4a7",
 				"node-sass": "^4.11.0"
+			},
+			"dependencies": {
+				"color-studio": {
+					"version": "github:automattic/color-studio#279f6ae4eacb15bc4f8f75856101aa4d0f4fd4a7",
+					"from": "github:automattic/color-studio#1.0.1",
+					"bundled": true,
+					"dev": true
+				}
 			}
 		},
 		"@automattic/tree-select": {
@@ -15884,7 +15892,6 @@
 							"resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz",
 							"integrity": "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==",
 							"dev": true,
-							"optional": true,
 							"requires": {
 								"balanced-match": "^1.0.0",
 								"concat-map": "0.0.1"
@@ -16074,7 +16081,6 @@
 							"resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz",
 							"integrity": "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==",
 							"dev": true,
-							"optional": true,
 							"requires": {
 								"brace-expansion": "^1.1.7"
 							}
