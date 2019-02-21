@@ -266,7 +266,7 @@ textarea {
 					color: var( --color-text );
 					font-size: 16px;
 					line-height: 1.5;
-					border: 1px solid $gray-lighten-20;
+					border: 1px solid --color-neutral-100;
 					background-color: $white;
 					transition: all 150ms ease-in-out;
 					box-sizing: border-box;
@@ -342,7 +342,7 @@ textarea {
 		div[simple-template='link-password'] a.text-capitalize {
 			text-transform: capitalize;
 			background: $white;
-			border-color: $gray-lighten-20;
+			border-color: --color-neutral-100;
 			border-style: solid;
 			border-width: 1px 1px 2px;
 			color: var( --color-text );
@@ -595,7 +595,7 @@ div[ng-show='busyIndicator'] {
 	background: $white;
 	position: relative !important;
 	top: 0 !important;
-	border: 1px solid $gray-lighten-20;
+	border: 1px solid --color-neutral-100;
 }
 
 .ui-select-bootstrap > .ui-select-no-choice {
