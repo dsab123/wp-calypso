@@ -125,9 +125,12 @@ export default function FilterToolbar( { value, onChange } ) {
 					<NavigableMenu className="tiled-gallery__filter-picker-menu">
 						{ availableFilters.map( ( { icon, title, value: filterValue } ) => (
 							<MenuItem
+								className={ value === filterValue ? 'is-active' : undefined }
 								icon={ icon }
-								isActive={ value === filterValue }
+								isSelected={ value === filterValue }
+								key={ filterValue || 'original' }
 								onClick={ applyOrUnset( filterValue ) }
+								role="menuitemcheckbox"
 							>
 								{ title }
 							</MenuItem>
