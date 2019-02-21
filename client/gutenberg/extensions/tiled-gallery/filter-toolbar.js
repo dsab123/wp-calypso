@@ -1,8 +1,15 @@
 /**
  * External Dependencies
  */
-import { DOWN } from '@wordpress/keycodes';
-import { Circle, Dropdown, IconButton, Path, Rect, SVG, Toolbar } from '@wordpress/components';
+import {
+	Circle,
+	Dropdown,
+	MenuItem,
+	NavigableMenu,
+	Path,
+	SVG,
+	Toolbar,
+} from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -73,6 +80,8 @@ const availableFilters = [
 	},
 ];
 
+const label = __( 'Pick an image filter' );
+
 export default function FilterToolbar( { value, onChange } ) {
 	return (
 		<Dropdown
@@ -80,32 +89,31 @@ export default function FilterToolbar( { value, onChange } ) {
 			className="editor-block-switcher"
 			contentClassName="editor-block-switcher__popover"
 			renderToggle={ ( { onToggle, isOpen } ) => {
-				const openOnArrowDown = event => {
-					if ( ! isOpen && event.keyCode === DOWN ) {
-						event.preventDefault();
-						event.stopPropagation();
-						onToggle();
-					}
-				};
-				const label = __( 'Pick an image filter' );
-
 				return (
-					<Toolbar>
-						<IconButton
-							onClick={ onToggle }
-							aria-haspopup="true"
-							aria-expanded={ isOpen }
-							label={ label }
-							tooltip={ label }
-							onKeyDown={ openOnArrowDown }
-							icon={
-								<SVG xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-									<Path fill="none" d="M0 0h24v24H0V0z" />
-									<Path d="M19 10v9H4.98V5h9V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2zm-2.94-2.06L17 10l.94-2.06L20 7l-2.06-.94L17 4l-.94 2.06L14 7zM12 8l-1.25 2.75L8 12l2.75 1.25L12 16l1.25-2.75L16 12l-2.75-1.25z" />
-								</SVG>
-							}
-						/>
-					</Toolbar>
+					<Toolbar
+						controls={ [
+							{
+								onClick: onToggle,
+								extraProps: {
+									'aria-haspopup': 'true',
+									'aria-expanded': isOpen,
+								},
+								title: label,
+								tooltip: label,
+								icon: (
+									<SVG
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+									>
+										<Path fill="none" d="M0 0h24v24H0V0z" />
+										<Path d="M19 10v9H4.98V5h9V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2zm-2.94-2.06L17 10l.94-2.06L20 7l-2.06-.94L17 4l-.94 2.06L14 7zM12 8l-1.25 2.75L8 12l2.75 1.25L12 16l1.25-2.75L16 12l-2.75-1.25z" />
+									</SVG>
+								),
+							},
+						] }
+					/>
 				);
 			} }
 			renderContent={ ( { onClose } ) => {
@@ -114,24 +122,17 @@ export default function FilterToolbar( { value, onChange } ) {
 					onClose();
 				};
 				return (
-					<Toolbar
-						icon={
-							<SVG width="24" height="24" viewBox="0 0 24 24">
-								<Rect fill="#f00" x="0" y="0" width="24" height="24" />
-							</SVG>
-						}
-						label={ __( 'Change Text Alignment' ) }
-						controls={ availableFilters.map( control => {
-							const { value: filterValue } = control;
-							const isActive = value === filterValue;
-
-							return {
-								...control,
-								isActive,
-								onClick: applyOrUnset( filterValue ),
-							};
-						} ) }
-					/>
+					<NavigableMenu>
+						{ availableFilters.map( ( { icon, title, value: filterValue } ) => (
+							<MenuItem
+								icon={ icon }
+								isActive={ value === filterValue }
+								onClick={ applyOrUnset( filterValue ) }
+							>
+								{ title }
+							</MenuItem>
+						) ) }
+					</NavigableMenu>
 				);
 			} }
 		/>
